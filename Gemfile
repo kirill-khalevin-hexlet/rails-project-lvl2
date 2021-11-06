@@ -63,7 +63,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'sqlite3', '~> 1.4'
 end
 
 gem 'minitest-power_assert'
