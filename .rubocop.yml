@@ -1,0 +1,17 @@
+require:
+  - rubocop-rails
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RedundantFetchBlock:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
