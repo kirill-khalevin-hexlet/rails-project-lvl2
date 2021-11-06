@@ -2,7 +2,7 @@ name: rubocop
 
 on: [push]
 
-jons:
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
