@@ -1,6 +1,6 @@
 name: rubocop
 
-on: [Push]
+on: [push]
 
 jons:
   build:
