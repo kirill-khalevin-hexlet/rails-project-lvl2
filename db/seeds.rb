@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 %w[IT finance pshychology relations sport cars other].freeze.each do |post_category|
-    PostCategory.create(name: post_category)
+  PostCategory.create(name: post_category)
 end

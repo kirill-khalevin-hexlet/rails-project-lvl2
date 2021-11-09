@@ -1,0 +1,13 @@
+- day_in_seconds = 60*60*24
+
+h1 class='mt-2'
+    | Posts
+p
+    - @posts.each do |post|
+        h1 = post.title
+        p = post.body
+        p = PostCategory.find(post.post_category_id).name
+        - days_ago = ((Time.now - post.created_at) / day_in_seconds).floor
+        span
+            = "#{days_ago.positive? ? days_ago.to_s.concat(' days ago') : 'today' } - #{post.user.email}"
+        hr

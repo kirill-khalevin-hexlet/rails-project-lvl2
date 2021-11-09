@@ -1,0 +1,6 @@
+h1 = "New post"
+= simple_form_for @post do |f|
+    = f.input :title
+    = f.input :body
+    = f.input :post_category_id
+    = f.button :submit, class: "btn btn-primary mt-1"
