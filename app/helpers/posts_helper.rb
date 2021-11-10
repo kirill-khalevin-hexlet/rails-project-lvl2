@@ -1,5 +1,6 @@
 module PostsHelper
   def offset(page = 1, posts_on_page = 10)
+    page = 1 unless page.positive?
     (page - 1) * posts_on_page
   end
 

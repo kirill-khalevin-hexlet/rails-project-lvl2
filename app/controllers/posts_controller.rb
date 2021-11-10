@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     posts_on_page = 10
     @pages = pages(posts_on_page)
-    @offset = offset(params.permit(:page)[:page].to_i || 1, posts_on_page)
+    @offset = offset(params.permit(:page)[:page].to_i, posts_on_page)
     @posts = Post.offset(@offset).limit(posts_on_page).order(created_at: :desc)
   end
 
