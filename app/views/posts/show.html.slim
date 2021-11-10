@@ -1,0 +1,11 @@
+- day_in_seconds = 86400
+
+h2 = link_to 'Posts', root_path
+br
+h1 = @post.title
+p = @post.body
+p = PostCategory.find(@post.post_category_id).name
+- days_ago = ((Time.now - @post.created_at) / day_in_seconds).floor
+span
+    = "#{days_ago.positive? ? days_ago.to_s.concat(' days ago') : 'today' } - #{@post.user.email}"
+hr

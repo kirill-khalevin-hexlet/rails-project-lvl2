@@ -12,6 +12,9 @@ AllCops:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/RedundantBegin:
+  Enabled: false
+
 Style/RedundantFetchBlock:
   Enabled: false
 

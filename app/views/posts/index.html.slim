@@ -1,4 +1,4 @@
-- day_in_seconds = 60*60*24
+- day_in_seconds = 86400
 
 h1 class='mt-2'
     | Posts
@@ -10,4 +10,8 @@ p
         - days_ago = ((Time.now - post.created_at) / day_in_seconds).floor
         span
             = "#{days_ago.positive? ? days_ago.to_s.concat(' days ago') : 'today' } - #{post.user.email}"
+        br
+        = link_to post_url(post)
+            button class="btn btn-primary"
+                | More
         hr

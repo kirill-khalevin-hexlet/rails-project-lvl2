@@ -1,28 +1,25 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  test 'should get index' do
-    get posts_index_url
+  test 'exists url posts index' do
+    get posts_url
     assert_response :success
   end
 
-  test 'should get show' do
-    get posts_show_url
+  test 'exists url posts show' do
+    get post_url(1)
+  end
+
+  test 'exists url posts new' do
+    get new_post_url
+  end
+
+  test 'exists url posts create' do
+    get posts_url
     assert_response :success
   end
 
-  test 'should get new' do
-    get posts_new_url
-    assert_response :success
-  end
-
-  test 'should get create' do
-    get posts_create_url
-    assert_response :success
-  end
-
-  test 'should get destroy' do
-    get posts_destroy_url
-    assert_response :success
+  test 'exists url posts destroy' do
+    delete post_path(:one)
   end
 end
