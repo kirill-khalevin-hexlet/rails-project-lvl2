@@ -5,6 +5,7 @@ require:
 AllCops:
   Exclude:
     - 'config/initializers/devise.rb'
+    - 'config/initializers/simple_form*'
     - 'db/schema.rb'
     - 'bin/**/*'
     - 'db/migrate/**/*'
@@ -25,4 +26,7 @@ Style/Documentation:
   Enabled: false
 
 Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/AbcSize:
   Enabled: false
