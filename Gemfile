@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'ancestry'
 gem 'bootstrap', '5.0.0'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -76,4 +77,5 @@ gem 'minitest-power_assert'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'simple_form'
+gem 'simple_form-dropdown_select'
 gem 'slim-rails'

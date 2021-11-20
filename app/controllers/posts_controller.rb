@@ -1,16 +1,19 @@
 class PostsController < ApplicationController
   include PostsHelper
+  include ActionView::Helpers::TagHelper
+  include ActionView::Context
+
+  before_action :init_pages, only: [:index]
+  helper_method :tag_comments
 
   def index
-    posts_on_page = 10
-    @pages = pages(posts_on_page)
-    @offset = offset(params.permit(:page)[:page].to_i, posts_on_page)
-    @posts = Post.offset(@offset).limit(posts_on_page).order(created_at: :desc)
+    @posts = Post.offset(@offset).limit(@posts_on_page).order(created_at: :desc)
   end
 
   def show
     begin
       @post = Post.find(params.permit(:id)[:id])
+      @post_comments_root = PostComment.where(post_id: @post.id, ancestry: nil)
     rescue ActiveRecord::RecordNotFound
       redirect_root
     end
@@ -36,5 +39,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).merge({ user_id: current_user.id }).permit(:title, :body, :post_category_id, :user_id)
+  end
+
+  def init_pages
+    @posts_on_page = 10
+    @pages = pages(@posts_on_page)
+    @offset = offset(params.permit(:page)[:page].to_i, @posts_on_page)
   end
 end

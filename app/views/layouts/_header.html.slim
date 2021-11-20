@@ -11,11 +11,11 @@ header
         li
 
       div class="navbar-nav"
-        - unless user_signed_in?
-          = link_to "Log in", new_user_session_path, class: "nav-link text-nowrap"
-          = link_to "Sign up", new_user_registration_path, class: "nav-link text-nowrap"
-        - else
+        - if user_signed_in?
           = link_to "New post", new_post_path, class: "nav-link text-nowrap"
           = link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link text-nowrap"
+        - else
+          = link_to "Log in", new_user_session_path, class: "nav-link text-nowrap"
+          = link_to "Sign up", new_user_registration_path, class: "nav-link text-nowrap"
 
 

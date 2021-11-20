@@ -1,0 +1,9 @@
+ul
+    p
+        = "#{post_comment.user.email} #{post_comment.created_at}"
+    p
+        = post_comment.content
+    hr
+    - post_comment.children.each do |post_comment_child|
+        =render :partial=>'post_comment', locals: { post_comment: post_comment_child }
+
