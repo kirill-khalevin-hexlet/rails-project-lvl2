@@ -6,8 +6,15 @@ h1 = @post.title
 p = @post.body
 p = PostCategory.find(@post.post_category_id).name
 - days_ago = ((Time.now - @post.created_at) / day_in_seconds).floor
-span
-    = "#{days_ago.positive? ? days_ago.to_s.concat(' days ago') : 'today' } - #{@post.user.email}"
+p class="d-flex justify-content-between mt-5"
+    span style="display:block"
+        = "#{days_ago.positive? ? days_ago.to_s.concat(' days ago') : 'today' } - #{@post.user.email}"
+    div
+        span = "#{@likes} "
+        - if user_liked
+            = link_to "Unlike", post_post_likes_index_path(@post, @like_of_user), :method => :delete
+        - else
+            = link_to "Like", post_post_likes_index_path(@post)
 hr
 
 - if user_signed_in?

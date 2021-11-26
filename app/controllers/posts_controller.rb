@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   include ActionView::Context
 
   before_action :init_pages, only: [:index]
-  helper_method :tag_comments
+  helper_method :tag_comments, :user_liked
 
   def index
     @posts = Post.offset(@offset).limit(@posts_on_page).order(created_at: :desc)
@@ -14,6 +14,8 @@ class PostsController < ApplicationController
     begin
       @post = Post.find(params.permit(:id)[:id])
       @post_comments_root = PostComment.where(post_id: @post.id, ancestry: nil)
+      @likes = @post.post_likes.count
+      @like_of_user = @post.post_likes.find_by(user_id: current_user.id)
     rescue ActiveRecord::RecordNotFound
       redirect_root
     end
@@ -33,8 +35,8 @@ class PostsController < ApplicationController
 
   private
 
-  def redirect_root
-    redirect_to root_path
+  def user_liked
+    @like_of_user.present?
   end
 
   def post_params
