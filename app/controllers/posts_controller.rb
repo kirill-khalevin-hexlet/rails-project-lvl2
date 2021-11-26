@@ -15,7 +15,7 @@ class PostsController < ApplicationController
       @post = Post.find(params.permit(:id)[:id])
       @post_comments_root = PostComment.where(post_id: @post.id, ancestry: nil)
       @likes = @post.post_likes.count
-      @like_of_user = @post.post_likes.find_by(user_id: current_user.id)
+      @like_of_user = @post.post_likes.find_by(user_id: current_user&.id)
     rescue ActiveRecord::RecordNotFound
       redirect_root
     end
