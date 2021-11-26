@@ -1,5 +1,3 @@
 require 'test_helper'
 
-class PostCommentsControllerTest < ActionDispatch::IntegrationTest
-
-end
+class PostCommentsControllerTest < ActionDispatch::IntegrationTest; end

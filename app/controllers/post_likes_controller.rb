@@ -16,7 +16,7 @@ class PostLikesController < ApplicationController
   end
 
   def like
-    @like ||= post&.post_likes.find_by(user_id: current_user.id)
+    @like ||= post.post_likes.find_by(user_id: current_user.id) if post.present?
   end
 
   def redirect_to_post

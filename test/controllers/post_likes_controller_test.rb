@@ -1,5 +1,3 @@
 require 'test_helper'
 
-class PostLikesControllerTest < ActionDispatch::IntegrationTest
-
-end
+class PostLikesControllerTest < ActionDispatch::IntegrationTest; end
