@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :post_category
-  belongs_to :user
+  belongs_to :user, foreign_key: 'creator'
   has_many :post_comments, dependent: :destroy
   has_many :post_likes, dependent: :destroy
   before_destroy :can_destroy?

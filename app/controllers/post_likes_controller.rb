@@ -1,6 +1,6 @@
 class PostLikesController < ApplicationController
   def index
-    post.post_likes.create(user_id: current_user.id) if like.nil?
+    post.post_likes.create(creator: current_user.id) if like.nil?
     redirect_to_post
   end
 
@@ -16,7 +16,7 @@ class PostLikesController < ApplicationController
   end
 
   def like
-    @like ||= post.post_likes.find_by(user_id: current_user.id) if post.present?
+    @like ||= post.post_likes.find_by(creator: current_user.id) if post.present?
   end
 
   def redirect_to_post

@@ -8,6 +8,6 @@ class PostCommentsController < ApplicationController
           else
             PostComment
           end
-    obj.create(post_comment_params.merge(post_ids).merge({ user_id: current_user.id })).persisted?
+    obj.create(post_comment_params.merge(post_ids).merge({ creator: current_user.id })).persisted?
   end
 end

@@ -15,7 +15,7 @@ class PostsController < ApplicationController
       @post = Post.find(params.permit(:id)[:id])
       @post_comments_root = PostComment.where(post_id: @post.id, ancestry: nil)
       @likes = @post.post_likes.count
-      @like_of_user = @post.post_likes.find_by(user_id: current_user&.id)
+      @like_of_user = @post.post_likes.find_by(creator: current_user&.id)
     rescue ActiveRecord::RecordNotFound
       redirect_root
     end
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).merge({ user_id: current_user.id }).permit(:title, :body, :post_category_id, :user_id)
+    params.require(:post).merge({ creator: current_user.id }).permit(:title, :body, :post_category_id, :creator)
   end
 
   def init_pages
