@@ -63,9 +63,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'faker'
 gem 'ancestry'
 gem 'devise'
-gem 'faker'
 gem 'minitest-power_assert'
 gem 'rubocop-rails', require: false
 gem 'simple_form'
