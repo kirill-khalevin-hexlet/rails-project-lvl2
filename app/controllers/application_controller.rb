@@ -1,9 +1,4 @@
-class ApplicationController < ActionController::Base
-  config.generators do |g|
-    g.template_engine :slim
-  end
+# frozen_string_literal: true
 
-  def redirect_root
-    redirect_to root_path
-  end
+class ApplicationController < ActionController::Base
 end

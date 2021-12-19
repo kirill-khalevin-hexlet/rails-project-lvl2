@@ -1,11 +1,15 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
+
   root 'posts#index'
 
   resources :posts do
-    resources :post_comments
-    get 'post_likes/index'
-    delete 'post_likes/:id(.:format)' => 'post_likes#destroy'
+    scope module: :posts do
+      resources :comments, only: [:create]
+      resources :likes, only: %i[create destroy]
+    end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

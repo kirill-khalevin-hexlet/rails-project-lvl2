@@ -1,17 +1,10 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
+  belongs_to :creator, class_name: 'User', foreign_key: 'user_id', inverse_of: :posts
   belongs_to :post_category
-  belongs_to :user, foreign_key: 'creator'
-  has_many :post_comments, dependent: :destroy
-  has_many :post_likes, dependent: :destroy
-  before_destroy :can_destroy?
+  has_many :comments, class_name: 'PostComment', dependent: :destroy
+  has_many :likes, class_name: 'PostLike', dependent: :destroy
 
-  private
-
-  def can_destroy?
-    if post_comments.any?
-      errors.add(:base, "Can't be destroyed because post_comment linked to post")
-      throw :abort
-    end
-    true
-  end
+  validates :title, :body, presence: true
 end
