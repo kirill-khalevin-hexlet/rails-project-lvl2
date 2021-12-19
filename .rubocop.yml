@@ -1,13 +1,35 @@
-require: rubocop-rails
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
-Style/Documentation:
+AllCops:
+  Exclude:
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/simple_form*'
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'db/migrate/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RedundantBegin:
+  Enabled: false
+
+Style/RedundantFetchBlock:
   Enabled: false
 
 Rails/FilePath:
   Enabled: false
 
-Layout/LineLength:
+Style/Documentation:
   Enabled: false
 
-Metrics/BlockLength:
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Rails/InverseOf:
   Enabled: false

@@ -1,5 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
 one:
-  name: js
+  name: MyString
 
 two:
-  name: ruby
+  name: MyString
