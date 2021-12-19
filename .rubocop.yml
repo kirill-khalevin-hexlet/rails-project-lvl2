@@ -30,3 +30,6 @@ Style/ClassAndModuleChildren:
 
 Metrics/AbcSize:
   Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
