@@ -12,7 +12,7 @@ module Posts
     end
 
     def destroy
-      @like = post.likes.find_by!(id: params[:id])
+      @like = post.likes.find(params[:id])
       @like.destroy
 
       redirect_to post_path(post)
